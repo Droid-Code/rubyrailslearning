@@ -1,0 +1,22 @@
+<h1>Add Product</h1>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "product_name">Name</label>:
+<%= text_field 'product', 'name' %></p>
+
+<p><label for = "product_price">Price</label>:
+<%= number_field 'product', 'price' %></p>
+
+<p><label for = "product_category_id">Category</label>:
+<%= collection_select(:product, :category_id, @category, :id, :name, prompt: true) %>
+</p>
+
+<p><label for = "product_audience_id">Audience</label>:
+<%= collection_select(:product, :audience_id, @audience, :id, (:name), prompt: true) %>
+</p>
+
+<%= submit_tag "create" %>
+<% end -%>
+
+<%= link_to 'Back', {:action => 'home',:class=>"btn"} %>

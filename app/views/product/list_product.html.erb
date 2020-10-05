@@ -1,0 +1,22 @@
+<h2>Products List</h2>
+
+<%= form_tag 'search_product', method: 'post',  :class =>'form-inline' do %>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="search" class="sr-only">search</label>
+    <input type="text" class="form-control" id="search" placeholder="name">
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Search</button> &nbsp;
+  <%= link_to 'Reset', {:action => 'list_product'}, :class => 'btn btn-primary mb-2' %>
+
+<% end %>
+
+<ul id = "Products">
+   <% @products.each do |c| %>
+   	<li>
+   		<%= link_to c.name,  {:action => "show_product", :id => c.id} %> 
+   		<b> <%= link_to 'Edit', {:action => "edit", :id => c.id} %></b>
+   		<b> <%= link_to 'Delete', {:action => "delete", :id => c.id} %></b>
+   	</li>
+   <% end %>
+</ul>
